@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "hgloo-app": {
+      "hosting": {
+        "ngx-admin-demo": [
+          "hgloo-app"
+        ]
+      }
+    }
+  }
+}

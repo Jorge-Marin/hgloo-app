@@ -1,0 +1,9 @@
+<nb-card *ngFor="let user of users">
+<nb-card-body>
+    <nb-user size="giant"
+            name="{{user.name}}"
+            title="Habilidad nen: {{user.nen}}"
+            picture={{user.pictureCharacter}}>
+    </nb-user>
+</nb-card-body>
+</nb-card>
