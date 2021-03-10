@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4 my-1 mx-auto">
+            <nb-card>
+                <nb-card-body>
+                    <div class="row">
+                        <img width="80px" class="mx-auto" src="../../../assets/images/logotype/logo-blue.svg" alt="">
+                        <div class="col-12 text-center subtext my-2">
+                            SELL OR BUY PRODUCTS.
+                        </div>
+                    </div>
+                    <div *ngIf="show[ 0 ].show">
+                        <div class="row" [@popFirstState]="(show[ 0 ].show ? 'show' : 'hide')">
+                            <div class="col-12">
+                                <ngx-profile-picture class="mx-auto"></ngx-profile-picture>
+                                <div class="col-12 subtext text-center">
+                                    Profile picture
+                                </div>
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Name" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Last name" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Phone number" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="show[ 1 ].show">
+                        <div class="row" [@popsecondState]="(show[ 1 ].show ? 'show' : 'hide')">
+                            <div class="col-9 mx-auto my-2 text-center">
+                                <nb-user size="large"
+                                    name="John Doe"
+                                    title="Engineer"
+                                    [picture]="'../../../assets/images/grant.jpg'">
+                                </nb-user>
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Email" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Passsword" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Confirm passsword" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="show[ 2 ].show">
+                        <div class="row" [@popsecondState]="(show[ 2 ].show ? 'show' : 'hide')">
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Pais" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Departamento" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Ciudad" name="" id="">
+                            </div>
+                            <div class="col-9 mx-auto my-2">
+                                <textarea style="height: 145px;" class="form-control register-input rounded-3 input-text" placeholder="Direccion" name="" id="" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-9 mx-auto my-3 text-center">
+                            <button class="rounded-pill continue-button" (click)="toggle()">Continue</button>
+                        </div>
+                        <div class="col-9 mx-auto text-center">
+                            <button class="rounded-pill continue-button log-in-button">Log in</button>
+                        </div>
+                        <div class="col-9 mx-auto my-4 text-center subtext">
+                            By continuing, you agree to 
+                            <b>
+                                <a href="https://akveo.page.link/8V2f" target="_blank">Hgloo conditions</a>
+                            </b>
+                             of use and privacy notice.
+                        </div>
+                        <div class="col-9 mx-auto text-center subtext">
+                            <b>
+                                <a href="https://akveo.page.link/8V2f" target="_blank">Need help?</a>
+                            </b>
+                        </div>
+                        <div class="col-9 mx-auto text-center">
+                            <img width="15px" src="../../../assets/images/logotype/decorator-1.svg">
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+@import '../../@theme/styles/variables.scss';
+
+.container-fluid {
+    height: 100vh;
+    background-color: white;
+    background-image: url('../../../assets/images/background-images/background-sign-up.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.register-input {
+    background-color: $color-gray-100;
+    border-color: $color-white;
+    height: 45px;
+    padding-left: 25px;
+}
+
+.continue-button {
+    padding: 16px 80px;
+    border: none;
+    background-color: $color-blue-900;
+    color: $color-white;
+}
+
+.log-in-button {
+    background-color: $color-gray-100;
+    color: $color-gray-900;
+    padding: 16px 90px;
+}
+
+nb-card {
+    background-color: transparent;
+    border: none;
+}
