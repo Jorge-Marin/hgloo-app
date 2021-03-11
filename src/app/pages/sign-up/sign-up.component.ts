@@ -39,8 +39,8 @@ export class SignUpComponent implements OnInit {
     phone: [ '' , Validators.required],
     email: ['', Validators.required],
     password: [ '', Validators.required ],
-    confirmPassword: [ '', Validators.required], 
-    country: [ '', Validators.required], 
+    confirmPassword: [ '', Validators.required],
+    country: [ '', Validators.required],
     province: [ '', Validators.required],
     city: [ '', Validators.required],
     address: [ '', Validators.required],
@@ -59,15 +59,15 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  get name() { return this.signUpForm.get('name') };
-  get lastname() { return this.signUpForm.get('lastname') };
-  get phone() { return this.signUpForm.get('phone') };
-  get email() { return this.signUpForm.get('email') };
-  get password() { return this.signUpForm.get('password') };
-  get confirmPassword() { return this.signUpForm.get('confirmPassword') };
-  get country() { return this.signUpForm.get('country') };
-  get province() { return this.signUpForm.get('province') };
-  get city() { return this.signUpForm.get('city') };
-  get address() { return this.signUpForm.get('address') };
+  get name() { return this.signUpForm.get('name'); }
+  get lastname() { return this.signUpForm.get('lastname'); }
+  get phone() { return this.signUpForm.get('phone'); }
+  get email() { return this.signUpForm.get('email'); }
+  get password() { return this.signUpForm.get('password'); }
+  get confirmPassword() { return this.signUpForm.get('confirmPassword'); }
+  get country() { return this.signUpForm.get('country'); }
+  get province() { return this.signUpForm.get('province'); }
+  get city() { return this.signUpForm.get('city'); }
+  get address() { return this.signUpForm.get('address'); }
 
 }

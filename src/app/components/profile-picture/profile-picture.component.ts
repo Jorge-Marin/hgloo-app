@@ -30,14 +30,11 @@ export class ProfilePictureComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = ( e: any ) => {
           this.picture.safeUrl = this.sanitizaer.bypassSecurityTrustStyle(
-            `url(' ${ e.target.result } ')`
+            'url(' + e.target.result + ')',
           );
-        }
+        };
         reader.readAsDataURL( event.target.files[0] );
       }
     }
-
-    console.log( this.picture );
   }
-  
 }
