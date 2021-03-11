@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4 my-1 mx-auto">
+        <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 my-1 mx-auto">
             <nb-card>
                 <nb-card-body>
                     <div class="row">
@@ -9,61 +9,69 @@
                             SELL OR BUY PRODUCTS.
                         </div>
                     </div>
-                    <div *ngIf="show[ 0 ].show">
-                        <div class="row" [@popFirstState]="(show[ 0 ].show ? 'show' : 'hide')">
-                            <div class="col-12">
-                                <ngx-profile-picture class="mx-auto"></ngx-profile-picture>
-                                <div class="col-12 subtext text-center">
-                                    Profile picture
+                    <form [formGroup]="signUpForm">
+                        <div *ngIf="show[ 0 ].show">
+                            <div class="row" [@popFirstState]="(show[ 0 ].show ? 'show' : 'hide')">
+                                <div class="col-12">
+                                    <ngx-profile-picture class="mx-auto"></ngx-profile-picture>
+                                    <div class="col-12 subtext text-center">
+                                        Profile picture
+                                    </div>
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="name" class="form-control register-input rounded-pill input-text" placeholder="Name">
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="lastname" class="form-control register-input rounded-pill input-text" placeholder="Last name">
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="phone" class="form-control register-input rounded-pill input-text" placeholder="Phone number">
                                 </div>
                             </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Name" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Last name" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Phone number" name="" id="">
+                        </div>
+                        <div *ngIf="show[ 1 ].show">
+                            <div class="row" [@popsecondState]="(show[ 1 ].show ? 'show' : 'hide')">
+                                <div class="col-9 mx-auto my-2">
+                                    <nb-user class="mx-auto" size="large"
+                                        name="John Doe"
+                                        title="Engineer"
+                                        [picture]="'../../../assets/images/grant.jpg'">
+                                    </nb-user>
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="email" class="form-control register-input rounded-pill input-text" placeholder="Email">
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="password" class="form-control register-input rounded-pill input-text" placeholder="Passsword">
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <input type="text" formControlName="confirmPassword" class="form-control register-input rounded-pill input-text" placeholder="Confirm passsword">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div *ngIf="show[ 1 ].show">
-                        <div class="row" [@popsecondState]="(show[ 1 ].show ? 'show' : 'hide')">
-                            <div class="col-9 mx-auto my-2 text-center">
-                                <nb-user size="large"
-                                    name="John Doe"
-                                    title="Engineer"
-                                    [picture]="'../../../assets/images/grant.jpg'">
-                                </nb-user>
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Email" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Passsword" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Confirm passsword" name="" id="">
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="show[ 2 ].show">
-                        <div class="row" [@popsecondState]="(show[ 2 ].show ? 'show' : 'hide')">
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Pais" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Departamento" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <input type="text" class="form-control register-input rounded-pill input-text" placeholder="Ciudad" name="" id="">
-                            </div>
-                            <div class="col-9 mx-auto my-2">
-                                <textarea style="height: 145px;" class="form-control register-input rounded-3 input-text" placeholder="Direccion" name="" id="" cols="30" rows="10"></textarea>
+                        <div *ngIf="show[ 2 ].show">
+                            <div class="row" [@popsecondState]="(show[ 2 ].show ? 'show' : 'hide')">
+                                <div class="col-9 mx-auto my-2">
+                                    <nb-select  class="" formControlName="country" placeholder="Pais">
+                                        <nb-option value="first">Paices</nb-option>
+                                    </nb-select>
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <nb-select  class="" formControlName="province" placeholder="Provincias">
+                                        <nb-option value="first">Provincias</nb-option>
+                                    </nb-select>
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <nb-select class="" formControlName="city" placeholder="Ciudad">
+                                        <nb-option value="first">Ciudades</nb-option>
+                                      </nb-select>
+                                </div>
+                                <div class="col-9 mx-auto my-2">
+                                    <textarea style="height: 145px;" formControlName="address" class="form-control register-input rounded-5 input-text" placeholder="Direccion" name="" id="" cols="30" rows="10"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row">
                         <div class="col-9 mx-auto my-3 text-center">
                             <button class="rounded-pill continue-button" (click)="toggle()">Continue</button>
