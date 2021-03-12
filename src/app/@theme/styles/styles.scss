@@ -17,6 +17,7 @@
 
 @import './layout';
 @import './overrides';
+@import './variables.scss';
 
 // install the framework and custom global styles
 @include nb-install() {
@@ -31,3 +32,30 @@
 
   @include nb-overrides();
 };
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('../../../assets/fonts/Montserrat/Montserrat-SemiBold.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('../../../assets/fonts/Montserrat/Montserrat-Medium.ttf') format('opentype');
+}
+
+.subtext {
+  font-family: 'Montserrat-SemiBold';
+  color: $color-gray-900;
+  font-size: 0.8rem;
+}
+
+.input-text {
+  font-family: 'Montserrat-Medium';
+  color: $color-gray-900;
+  font-size: 0.8rem;
+}
+
+a {
+  color: $color-blue-900;
+  font-family: 'Montserrat-SemiBold';
+}

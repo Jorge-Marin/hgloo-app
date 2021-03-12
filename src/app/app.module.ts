@@ -19,6 +19,7 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
+  NbButtonModule,
 } from '@nebular/theme';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule  } from '@angular/fire';
@@ -44,6 +45,7 @@ import { environment } from '../environments/environment';
     ThemeModule.forRoot(),
     AngularFireAuthModule,
     AngularFireModule.initializeApp( environment.firebaseConfig ),
+    NbButtonModule,
   ],
   bootstrap: [AppComponent],
 })

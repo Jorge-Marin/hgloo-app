@@ -1,0 +1,5 @@
+<div class="icon-box ml-auto mr-auto" style="position: relative;">
+    <div class="rounded-circle profilepic-container" *ngIf="picture.safeUrl" [style.background-image]="picture.safeUrl"></div>
+    <div class="rounded-circle profilepic-container" *ngIf="!picture.safeUrl" style="background-color: gray"></div>
+    <input type="file" (change)="selectPicture($event)">
+</div>
