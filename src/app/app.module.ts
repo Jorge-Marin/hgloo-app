@@ -24,9 +24,10 @@ import {
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule  } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
