@@ -65,7 +65,6 @@ export class SignUpComponent implements OnInit {
   get city() { return this.signUpForm.get('city'); }
   get address() { return this.signUpForm.get('address'); }
 
-
   saveUser() {
     if ( this.signUpForm.valid ) {
       this.auth.signUp( this.email.value, this.password.value ).then( res => {
