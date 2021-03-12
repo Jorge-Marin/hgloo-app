@@ -76,8 +76,8 @@ export class SignUpComponent implements OnInit {
   }
 
   delay( ms: number) {
-    setTimeout( ( ) => { 
-      this.showForm = !this.showForm; 
+    setTimeout( ( ) => {
+      this.showForm = !this.showForm;
       this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
       this.currentIndex++;
       this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
