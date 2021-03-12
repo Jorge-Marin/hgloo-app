@@ -29,9 +29,36 @@
     padding: 16px 90px;
 }
 
-nb-card {
-    background-color: transparent;
-    border: none;
+nb-select { width: 100%; }
+
+nb-radio {
+    float: left !important;
+    zoom: 0.8;
 }
 
-nb-select { width: 100%; }
+h6, h5 {
+    font-family: 'Montserrat-SemiBold' !important;
+    color: $color-gray-900;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+.terms-and-conditions-buttons {
+    padding: 12px 15px;
+    font-size: 0.7rem;
+}
+
+.form-control:invalid, .form-control .is-invalid {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%#959595' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") !important;
+}
+
+@media screen and (max-width: 450px) {
+    .continue-button {
+        padding: 10px 20px;
+    }
+    .log-in-button {
+        padding: 10px 30px;
+    }
+}
