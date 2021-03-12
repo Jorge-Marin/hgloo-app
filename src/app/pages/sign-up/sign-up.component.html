@@ -9,9 +9,9 @@
                             SELL OR BUY PRODUCTS.
                         </div>
                     </div>
-                    <form [formGroup]="signUpForm">
+                    <form [formGroup]="signUpForm" style="height: 315px; display: grid; align-items: center;" [@popFirstState]="stateName">
                         <div *ngIf="show[ 0 ].show">
-                            <div class="row" [@popFirstState]="(show[ 0 ].show ? 'show' : 'hide')">
+                            <div class="row">
                                 <div class="col-12">
                                     <ngx-profile-picture class="mx-auto"></ngx-profile-picture>
                                     <div class="col-12 subtext text-center">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div *ngIf="show[ 1 ].show">
-                            <div class="row" [@popsecondState]="(show[ 1 ].show ? 'show' : 'hide')">
+                            <div class="row">
                                 <div class="col-9 mx-auto my-2">
                                     <nb-user class="mx-auto" size="large"
                                         name="John Doe"
@@ -50,31 +50,38 @@
                             </div>
                         </div>
                         <div *ngIf="show[ 2 ].show">
-                            <div class="row" [@popsecondState]="(show[ 2 ].show ? 'show' : 'hide')">
+                            <div class="col-9 mx-auto my-2">
+                                <nb-user class="mx-auto" size="large"
+                                    name="John Doe"
+                                    title="Engineer"
+                                    [picture]="'../../../assets/images/grant.jpg'">
+                                </nb-user>
+                            </div>
+                            <div class="row">
                                 <div class="col-9 mx-auto my-2">
-                                    <nb-select  class="" formControlName="country" placeholder="Pais">
+                                    <nb-select  class="input-text" formControlName="country" placeholder="Pais">
                                         <nb-option value="first">Paices</nb-option>
                                     </nb-select>
                                 </div>
                                 <div class="col-9 mx-auto my-2">
-                                    <nb-select  class="" formControlName="province" placeholder="Provincias">
+                                    <nb-select  class="input-text" formControlName="province" placeholder="Provincias">
                                         <nb-option value="first">Provincias</nb-option>
                                     </nb-select>
                                 </div>
                                 <div class="col-9 mx-auto my-2">
-                                    <nb-select class="" formControlName="city" placeholder="Ciudad">
+                                    <nb-select class="input-text" formControlName="city" placeholder="Ciudad">
                                         <nb-option value="first">Ciudades</nb-option>
                                       </nb-select>
-                                </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <textarea style="height: 145px;" formControlName="address" class="form-control register-input rounded-5 input-text" placeholder="Direccion" name="" id="" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div class="row">
-                        <div class="col-9 mx-auto my-3 text-center">
-                            <button class="rounded-pill continue-button" (click)="toggle()">Continue</button>
+                        <div class="col-9 mx-auto my-1 text-center">
+                            <button class="rounded-pill continue-button" (click)="toggle()" *ngIf="!show[ 2 ].show">Continue</button>
+                        </div>
+                        <div class="col-9 mx-auto my-1 text-center">
+                            <button class="rounded-pill continue-button" (click)="saveUser()" *ngIf="show[ 2 ].show">Continue</button>
                         </div>
                         <div class="col-9 mx-auto text-center">
                             <button class="rounded-pill continue-button log-in-button">Log in</button>

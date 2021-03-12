@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state,
-  style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'ngx-sign-up',
@@ -15,23 +15,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
       state('hide',   style({
         opacity: 0,
       })),
-      transition('show => hide', animate('1500ms ease-out')),
-      transition('hide => show', animate('1500ms ease-in')),
-    ]),
-    trigger('popsecondState', [
-      state('show', style({
-        opacity: 1,
-      })),
-      state('hide',   style({
-        opacity: 0,
-      })),
-      transition('show => hide', animate('1500ms ease-out')),
-      transition('hide => show', animate('1500ms ease-in')),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('600ms ease-in')),
     ]),
   ],
 })
+
 export class SignUpComponent implements OnInit {
   show = [ { show: true }, { show: false }, { show: false } ];
+  showForm: boolean = false;
   currentIndex: number = 0;
   signUpForm: FormGroup = this.formBuilder.group({
     name: ['', Validators.required ],
@@ -46,18 +38,21 @@ export class SignUpComponent implements OnInit {
     address: [ '', Validators.required],
   });
 
-  constructor( private formBuilder: FormBuilder ) { }
+  constructor( private formBuilder: FormBuilder,
+               private auth: AuthService ) { }
 
   ngOnInit(): void {
+    this.showForm = true;
   }
 
   toggle() {
-    this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
-    this.currentIndex++;
-    this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
-
+    this.showForm = !this.showForm;
+    this.delay( 800 );
   }
 
+  get stateName() {
+    return this.showForm ? 'show' : 'hide';
+  }
 
   get name() { return this.signUpForm.get('name'); }
   get lastname() { return this.signUpForm.get('lastname'); }
@@ -70,4 +65,22 @@ export class SignUpComponent implements OnInit {
   get city() { return this.signUpForm.get('city'); }
   get address() { return this.signUpForm.get('address'); }
 
+
+  saveUser() {
+    if ( this.signUpForm.valid ) {
+      this.auth.signUp( this.email.value, this.password.value ).then( res => {
+        const user = this.signUpForm.value;
+        user['idUsuario'] = res.uid;
+      });
+    }
+  }
+
+  delay( ms: number) {
+    setTimeout( ( ) => { 
+      this.showForm = !this.showForm; 
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+      this.currentIndex++;
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+    } , ms );
+  }
 }
