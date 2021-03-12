@@ -1,0 +1,102 @@
+@import '../../@theme/styles/variables.scss';
+
+.container-fluid {
+    height: 100vh;
+    background-color: white;
+    background-position: center;
+    padding-top: 1%;
+}
+
+.lado1 {
+    float: left;
+    width: 400px;
+    margin-left: 10%;
+}
+
+.lado2 {
+    position: relative;
+    float: left;
+    height: 60%;
+    width: 60%;
+}
+
+.lado2 img {
+width: 100%;
+height: auto;
+padding: 20px;
+}
+
+.padre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hijo {
+    justify-content: center;
+    align-items: center;
+}
+
+.register-input {
+    background-color: $color-gray-100;
+    border-color: $color-white;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #959595;
+    margin-bottom: 10px;
+    width: 302.92px;
+    height: 46.37px;
+    padding-left: 30px;
+}
+
+.continue-button {
+    border: none;
+    border-radius: 20px;
+    background-color: $color-blue-900;
+    color: $color-white;
+    width: 226.37px;
+    height: 46.37px;
+    font-family: Montserrat;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 15px;
+}
+
+.log-in-button {
+    background-color: $color-gray-100;
+    border-radius: 20px;
+    color: $color-gray-900;
+    width: 226.37px;
+    height: 46.37px;
+    font-family: Montserrat;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+nb-card {
+    background-color: transparent;
+    border: none;
+}
+
+nb-select { width: 100%; }
+
+@media screen and (max-width: 999px) {
+    .lado2{
+    display:none;
+    }
+    .lado1{
+        width: 100%;
+        padding: 0%;
+        margin-left: 0%;
+    }
+}
+
+
+    @media screen and (max-width: 480px) {
+        .register-input {
+            width: auto;
+        }
+        .continue-button {
+            width: 150px;
+        }
+    }

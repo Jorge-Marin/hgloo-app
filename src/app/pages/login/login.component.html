@@ -1,0 +1,53 @@
+<div class="container-fluid mx-auto">
+    <div class="row lado1">
+        <div >
+            <nb-card>
+                <nb-card-body>
+                    <div class="row">
+                        <img width="121.39px" height="50.78px" class="mx-auto" src="../../../assets/images/logotype/logo-blue.svg" alt="">
+                        <div class="col-12 text-center subtext my-2" font-size='12px'>
+                            SELL OR BUY PRODUCTS.
+                        </div>
+                    </div>
+                    <form [formGroup]="signUpForm" style="height: 180px; display: grid; align-items: center;" >
+                            <div class="row padre" >
+                                <div class="hijo">
+                                    <input type="email" formControlName="email" class="form-control register-input input-text" placeholder="Correo">
+                                </div>
+                                <div class="hijo">
+                                    <input type="password" formControlName="password" class="form-control register-input input-text" placeholder="Contraseña">
+                                </div>
+                            </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-9 mx-auto my-1 text-center">
+                            <button class="rounded-pill continue-button" (click)="saveUser()" >Sign Up</button>
+                        </div>
+                        
+                        <div class="col-9 mx-auto text-center">
+                            <button href="/pages/sign-up" class="rounded-pill continue-button log-in-button">Crear una cuenta</button>
+                        </div>
+                        <div class="col-9 mx-auto my-4 text-center subtext">
+                            By continuing, you agree to 
+                            <b>
+                                <a href="https://akveo.page.link/8V2f" target="_blank">Hgloo conditions</a>
+                            </b>
+                            of use and privacy notice.
+                        </div><br><br>
+                        <div class="col-9 mx-auto text-center subtext">
+                            <b>
+                                <a href="https://akveo.page.link/8V2f" target="_blank">Need help?</a>
+                            </b><br><br><br>
+                        </div>
+                        <div class="col-9 mx-auto text-center">
+                            <img width="15px" src="../../../assets/images/logotype/decorator-1.svg">
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+    <div class="lado2 col-md-6 " > 
+        <img src="../../../assets/images/login.JPG">
+    </div>
+</div>
