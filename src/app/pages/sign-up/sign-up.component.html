@@ -13,7 +13,7 @@
                         <div *ngIf="show[ 0 ].show">
                             <div class="row">
                                 <div class="col-12">
-                                    <ngx-profile-picture class="mx-auto"></ngx-profile-picture>
+                                    <ngx-profile-picture (imageReady)="setImage( $event )" class="mx-auto"></ngx-profile-picture>
                                     <div class="col-12 subtext text-center">
                                         Profile picture
                                     </div>

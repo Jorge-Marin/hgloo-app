@@ -47,7 +47,7 @@ export class SignUpComponent implements OnInit {
 
   toggle() {
     this.showForm = !this.showForm;
-    this.delay( 800 );
+    this.delay( 300 );
   }
 
   get stateName() {
@@ -82,5 +82,9 @@ export class SignUpComponent implements OnInit {
       this.currentIndex++;
       this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
     } , ms );
+  }
+
+  setImage( image ) {
+    console.log( image );
   }
 }

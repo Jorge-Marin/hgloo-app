@@ -23,7 +23,7 @@ export class AuthService {
          });
 
         resolve( { uid: add.user.uid });
-
+        
       });
     });
   }

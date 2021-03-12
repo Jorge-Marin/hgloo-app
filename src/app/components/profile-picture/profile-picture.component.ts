@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer , SafeStyle } from '@angular/platform-browser';
 
 interface Picture {
@@ -14,6 +14,7 @@ interface Picture {
 })
 export class ProfilePictureComponent implements OnInit {
   picture: Picture = { safeUrl: null };
+  @Output() imageReady = new EventEmitter();
   defaultPicture: string = 'url("../../../assets/images/grant.jpg")';
 
   constructor( private sanitizaer: DomSanitizer ) { }
@@ -36,5 +37,7 @@ export class ProfilePictureComponent implements OnInit {
         reader.readAsDataURL( event.target.files[0] );
       }
     }
+
+    this.imageReady.emit( { image: this.picture });
   }
 }
