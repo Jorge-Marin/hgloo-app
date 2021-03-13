@@ -60,6 +60,13 @@ a {
   font-family: 'Montserrat-SemiBold';
 }
 
-.modal-content-lg {
-  width: 740px !important;
+.modal-content-lg, .modal-content-xl {
+  width:80vw !important;
+}
+
+.select-button {
+  border-radius: 25px !important;
+  border: none !important;
+  height: 45px;
+  background-color: $color-gray-100 !important;
 }
