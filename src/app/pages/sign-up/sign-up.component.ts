@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { terms } from '../../utilities/terms-and-conditions';
 import { StorageService } from '../../services/storage.service';
 import { LocationService } from '../../services/location.service';
@@ -34,10 +34,12 @@ export class SignUpComponent implements OnInit {
   showForm: boolean = false;
   currentIndex: number = 0;
   countrys: any = [];
+  detailDialogRef: NbDialogRef<any>;
   provinces: any = [];
   citys: any = [];
   profileImage: any;
   photo: any;
+  seeAcceptButton: boolean = false;
   saving: boolean = false;
   termsAndConditions = terms;
   signUpForm: FormGroup = this.formBuilder.group({
@@ -100,6 +102,7 @@ export class SignUpComponent implements OnInit {
       }
       case 2: {
         if ( !this.country.invalid && !this.province.invalid && !this.city.invalid ) {
+          this.seeAcceptButton = true;
           this.openModal(modal);
          }
         break;
@@ -121,8 +124,9 @@ export class SignUpComponent implements OnInit {
           user['urlFoto'] = upload.url;
 
           this.http.post( this.urlrequest + '/sign-up/register-user/' , user).subscribe( response => {
+            this. detailDialogRef.close();
             this.saving = false;
-            this.router.navigate(['/help-for-user']);
+            this.go('/help-for-user');
           });
         });
       });
@@ -160,6 +164,15 @@ export class SignUpComponent implements OnInit {
   }
 
   openModal(modal: any ) {
-    this.dialogService.open(modal, { hasScroll: true});
+    this. detailDialogRef = this.dialogService.open(modal, { hasScroll: true});
+  }
+
+  closeModal() {
+    this.seeAcceptButton = false;
+    this.detailDialogRef.close();
+  }
+
+  go( path: string ) {
+    this.router.navigate( [path] );
   }
 }

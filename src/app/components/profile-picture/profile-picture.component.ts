@@ -16,6 +16,7 @@ interface Picture {
 export class ProfilePictureComponent implements OnInit {
   @Output() imageReady = new EventEmitter();
   picture: Picture = { safeUrl: null };
+  defaultBackground: SafeStyle = this.sanitizer.bypassSecurityTrustStyle( 'url(' + '../../../assets/images/background-images/image-outline.svg' + ')' );
   defaultPicture: string = 'url("../../../assets/images/grant.jpg")';
 
   constructor( private sanitizer: DomSanitizer ) { }
