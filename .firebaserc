@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "hgloo-app": {
-      "hosting": {
-        "ngx-admin-demo": [
-          "hgloo-app"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "hgloo-app"
   }
