@@ -29,9 +29,32 @@
     padding: 16px 90px;
 }
 
-nb-card {
-    background-color: transparent;
-    border: none;
+nb-select { width: 100%; }
+
+nb-radio {
+    float: left !important;
+    zoom: 0.8;
 }
 
-nb-select { width: 100%; }
+h6, h5 {
+    font-family: 'Montserrat-SemiBold' !important;
+    color: $color-gray-900;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+.terms-and-conditions-buttons {
+    padding: 12px 15px;
+    font-size: 0.7rem;
+}
+
+@media screen and (max-width: 450px) {
+    .continue-button {
+        padding: 10px 20px;
+    }
+    .log-in-button {
+        padding: 10px 30px;
+    }
+}
