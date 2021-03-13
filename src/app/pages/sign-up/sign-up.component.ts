@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { NbDialogService } from '@nebular/theme';
+import { terms } from '../../utilities/terms-and-conditions';
+import { StorageService } from '../../services/storage.service';
+import { LocationService } from '../../services/location.service';
+import { emailPattern, phoneNumber } from '../../utilities/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-sign-up',
@@ -23,35 +30,42 @@ import { AuthService } from '../../services/auth.service';
 
 export class SignUpComponent implements OnInit {
   show = [ { show: true }, { show: false }, { show: false } ];
+  urlrequest: string = 'https://hgloo-api-rest.herokuapp.com';
   showForm: boolean = false;
   currentIndex: number = 0;
+  countrys: any = [];
+  provinces: any = [];
+  citys: any = [];
+  profileImage: any;
+  photo: any;
+  saving: boolean = false;
+  termsAndConditions = terms;
   signUpForm: FormGroup = this.formBuilder.group({
     name: ['', Validators.required ],
     lastname: ['', Validators.required],
-    phone: [ '' , Validators.required],
-    email: ['', Validators.required],
-    password: [ '', Validators.required ],
+    phone: [ '' , [ Validators.required , Validators.pattern( phoneNumber )]],
+    email: ['', [Validators.required, Validators.pattern( emailPattern )]],
+    password: [ '', Validators.required],
     confirmPassword: [ '', Validators.required],
     country: [ '', Validators.required],
     province: [ '', Validators.required],
     city: [ '', Validators.required],
-    address: [ '', Validators.required],
+    genre: ['', Validators.required],
   });
 
   constructor( private formBuilder: FormBuilder,
-               private auth: AuthService ) { }
+               private auth: AuthService,
+               private location: LocationService,
+               private storage: StorageService,
+               private http: HttpClient,
+               private dialogService: NbDialogService,
+               private router: Router) { }
 
   ngOnInit(): void {
     this.showForm = true;
-  }
-
-  toggle() {
-    this.showForm = !this.showForm;
-    this.delay( 300 );
-  }
-
-  get stateName() {
-    return this.showForm ? 'show' : 'hide';
+    this.location.getCountrys().subscribe( country => {
+      this.countrys = country;
+    });
   }
 
   get name() { return this.signUpForm.get('name'); }
@@ -63,14 +77,54 @@ export class SignUpComponent implements OnInit {
   get country() { return this.signUpForm.get('country'); }
   get province() { return this.signUpForm.get('province'); }
   get city() { return this.signUpForm.get('city'); }
-  get address() { return this.signUpForm.get('address'); }
+  get genre() { return this.signUpForm.get('genre'); }
 
+  toggle( modal: any) {
+    switch ( this.currentIndex ) {
+      case 0: {
+        if ( this.photo !== undefined && !this.name.invalid && !this.lastname.invalid && !this.phone.invalid ) {
+          this.delay( 300 );
+          this.showForm = !this.showForm;
+         }
+         break;
+      }
+      case 1: {
+        if ( this.confirmPassword.value !== this.password.value ) {
+          this.confirmPassword.setErrors( { invalid: true } );
+        }
+        if ( !this.email.invalid && !this.password.invalid && !this.confirmPassword.invalid ) {
+          this.delay( 300 );
+          this.showForm = !this.showForm;
+         }
+         break;
+      }
+      case 2: {
+        if ( !this.country.invalid && !this.province.invalid && !this.city.invalid ) {
+          this.openModal(modal);
+         }
+        break;
+     }
+   }
+  }
+
+  get stateName() {
+    return this.showForm ? 'show' : 'hide';
+  }
 
   saveUser() {
+    this.saving = true;
     if ( this.signUpForm.valid ) {
       this.auth.signUp( this.email.value, this.password.value ).then( res => {
-        const user = this.signUpForm.value;
-        user['idUsuario'] = res.uid;
+        this.storage.uploadFile( this.photo, res.uid).then( upload => {
+          const user = this.signUpForm.value;
+          user['id'] = res.uid;
+          user['urlFoto'] = upload.url;
+
+          this.http.post( this.urlrequest + '/sign-up/register-user/' , user).subscribe( response => {
+            this.saving = false;
+            this.router.navigate(['/help-for-user']);
+          });
+        });
       });
     }
   }
@@ -84,6 +138,28 @@ export class SignUpComponent implements OnInit {
     } , ms );
   }
 
-  setImage( image ) {
+  setImage( $image ) {
+    this.photo = $image.profile.file;
+    const reader = new FileReader();
+    reader.readAsDataURL($image.profile.file);
+    reader.onload = () => {
+    this.profileImage = reader.result;
+    };
+  }
+
+  getProvinces() {
+    this.location.getProvinces( this.country.value ).subscribe( provinces => {
+      this.provinces = provinces;
+    });
+  }
+
+  getCitys() {
+    this.location.getCitys( this.country.value, this.province.value ).subscribe( citys => {
+      this.citys = citys;
+    });
+  }
+
+  openModal(modal: any ) {
+    this.dialogService.open(modal, { hasScroll: true});
   }
 }
