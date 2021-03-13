@@ -1,14 +1,15 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfilePictureComponent } from '../../components/profile-picture/profile-picture.component';
+import { ProfilePictureModule } from '../../components/profile-picture/profile-picture.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ ProfilePictureComponent, ],
+  declarations: [  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    ProfilePictureModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
