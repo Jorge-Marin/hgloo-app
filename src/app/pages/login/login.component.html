@@ -1,5 +1,5 @@
 <div class="container-fluid mx-auto">
-    <div class="row lado1">
+    <div class="row lado1 my-5">
         <div >
             <nb-card>
                 <nb-card-body>
@@ -9,7 +9,7 @@
                             SELL OR BUY PRODUCTS.
                         </div>
                     </div>
-                    <form [formGroup]="signUpForm" style="height: 180px; display: grid; align-items: center;" >
+                    <form [formGroup]="loginForm" style="height: 180px; display: grid; align-items: center;" >
                             <div class="row padre" >
                                 <div class="hijo">
                                     <input type="email" formControlName="email" class="form-control register-input input-text" placeholder="Correo">
@@ -21,7 +21,7 @@
                     </form>
                     <div class="row">
                         <div class="col-9 mx-auto my-1 text-center">
-                            <button class="rounded-pill continue-button" (click)="saveUser()" >Sign Up</button>
+                            <button class="rounded-pill continue-button" (click)="login()">Sign Up</button>
                         </div>
                         
                         <div class="col-9 mx-auto text-center">
