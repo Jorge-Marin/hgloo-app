@@ -80,15 +80,15 @@ export class SignUpComponent implements OnInit {
   get genre() { return this.signUpForm.get('genre'); }
 
   toggle( modal: any) {
-    switch( this.currentIndex ) { 
-      case 0: { 
+    switch ( this.currentIndex ) {
+      case 0: {
         if ( this.photo !== undefined && !this.name.invalid && !this.lastname.invalid && !this.phone.invalid ) {
           this.delay( 300 );
           this.showForm = !this.showForm;
          }
-         break; 
-      } 
-      case 1: { 
+         break;
+      }
+      case 1: {
         if ( this.confirmPassword.value !== this.password.value ) {
           this.confirmPassword.setErrors( { invalid: true } );
         }
@@ -96,14 +96,14 @@ export class SignUpComponent implements OnInit {
           this.delay( 300 );
           this.showForm = !this.showForm;
          }
-         break; 
-      } 
-      case 2: { 
+         break;
+      }
+      case 2: {
         if ( !this.country.invalid && !this.province.invalid && !this.city.invalid ) {
           this.openModal(modal);
          }
-        break; 
-     } 
+        break;
+     }
    }
   }
 
@@ -150,7 +150,7 @@ export class SignUpComponent implements OnInit {
   getProvinces() {
     this.location.getProvinces( this.country.value ).subscribe( provinces => {
       this.provinces = provinces;
-    });    
+    });
   }
 
   getCitys() {

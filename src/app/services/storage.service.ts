@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
- 
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
 
@@ -11,7 +11,7 @@ export class StorageService {
   uploadFile(file: File, path: string): Promise<any> {
     return new Promise( (resolve, reject) => {
       const uidFolder =  this.storage.ref(path);
-      uidFolder.put(file).then( ( url ) => {
+      uidFolder.put(file).then( ( ) => {
         uidFolder.getDownloadURL().subscribe( ( url ) => {
           resolve( { url: url } );
         }, error => {
