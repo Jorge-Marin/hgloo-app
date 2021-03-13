@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         if ( user ) {
           user.getIdToken().then( token => {
             const tokenData = JSON.parse( localStorage.getItem('token') );
-            console.log(tokenData[0].token);
             if ( tokenData[0].token === token) {
               this.router.navigate(['/dashboard']);
             }
@@ -44,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   login() {
    if ( this.loginForm.valid ) {
-      this.auth.login( this.email.value, this.password.value)
+      this.auth.login( this.email.value, this.password.value);
    }
   }
 }

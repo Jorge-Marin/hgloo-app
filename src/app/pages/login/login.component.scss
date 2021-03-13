@@ -21,9 +21,9 @@
 }
 
 .lado2 img {
-width: 100%;
-height: auto;
-padding: 20px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
 }
 
 .padre {
@@ -81,10 +81,10 @@ nb-card {
 nb-select { width: 100%; }
 
 @media screen and (max-width: 999px) {
-    .lado2{
+    .lado2 {
     display:none;
     }
-    .lado1{
+    .lado1 {
         width: 100%;
         padding: 0%;
         margin-left: 0%;
@@ -92,11 +92,11 @@ nb-select { width: 100%; }
 }
 
 
-    @media screen and (max-width: 480px) {
-        .register-input {
-            width: auto;
-        }
-        .continue-button {
-            width: 150px;
-        }
+@media screen and (max-width: 480px) {
+    .register-input {
+        width: auto;
     }
+    .continue-button {
+        width: 150px;
+    }
+}

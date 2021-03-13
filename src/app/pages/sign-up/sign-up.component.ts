@@ -84,6 +84,5 @@ export class SignUpComponent implements OnInit {
   }
 
   setImage( image ) {
-    console.log( image );
   }
 }

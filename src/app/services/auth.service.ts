@@ -26,7 +26,6 @@ export class AuthService {
          });
 
         resolve( { uid: add.user.uid });
-        
       });
     });
   }
@@ -49,7 +48,7 @@ export class AuthService {
       });
     });
   }
-  
+
   isAuthenticated() {
     return this.fireAuth.authState.pipe(first()).toPromise();
   }
