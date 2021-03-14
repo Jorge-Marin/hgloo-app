@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { NbDialogService, NbDialogRef } from '@nebular/theme';
+import { NbDialogService, NbDialogRef, NbToastrModule } from '@nebular/theme';
 import { terms } from '../../utilities/terms-and-conditions';
 import { StorageService } from '../../services/storage.service';
 import { LocationService } from '../../services/location.service';
@@ -9,6 +9,7 @@ import { emailPattern, phoneNumber } from '../../utilities/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-sign-up',
@@ -61,7 +62,8 @@ export class SignUpComponent implements OnInit {
                private storage: StorageService,
                private http: HttpClient,
                private dialogService: NbDialogService,
-               private router: Router) { }
+               private router: Router,
+               private toast: NbToastrService) { }
 
   ngOnInit(): void {
     this.showForm = true;
@@ -87,6 +89,8 @@ export class SignUpComponent implements OnInit {
         if ( this.photo !== undefined && !this.name.invalid && !this.lastname.invalid && !this.phone.invalid ) {
           this.delay( 300 );
           this.showForm = !this.showForm;
+         } else {
+          this.toast.show('Estos campos son obligatorios.', 'Advertencia', { status: 'danger', icon: 'close-circle-outline' });
          }
          break;
       }
@@ -97,6 +101,8 @@ export class SignUpComponent implements OnInit {
         if ( !this.email.invalid && !this.password.invalid && !this.confirmPassword.invalid ) {
           this.delay( 300 );
           this.showForm = !this.showForm;
+         } else {
+          this.toast.show('Estos campos son obligatorios.', 'Advertencia', { status: 'danger', icon: 'close-circle-outline' });
          }
          break;
       }
@@ -104,7 +110,9 @@ export class SignUpComponent implements OnInit {
         if ( !this.country.invalid && !this.province.invalid && !this.city.invalid ) {
           this.seeAcceptButton = true;
           this.openModal(modal);
-         }
+         } else {
+          this.toast.show('Estos campos son obligatorios.', 'Advertencia', { status: 'danger', icon: 'close-circle-outline' });
+        }
         break;
      }
    }
@@ -116,6 +124,7 @@ export class SignUpComponent implements OnInit {
 
   saveUser() {
     this.saving = true;
+    this.detailDialogRef.close();
     if ( this.signUpForm.valid ) {
       this.auth.signUp( this.email.value, this.password.value ).then( res => {
         this.storage.uploadFile( this.photo, res.uid).then( upload => {
@@ -124,9 +133,9 @@ export class SignUpComponent implements OnInit {
           user['urlFoto'] = upload.url;
 
           this.http.post( this.urlrequest + '/sign-up/register-user/' , user).subscribe( response => {
-            this. detailDialogRef.close();
             this.saving = false;
-            this.go('/help-for-user');
+            this.toast.show('Bienvenido a Hgloo.', 'Enhorabuena', { status: 'success', icon: 'person-done-outline' });
+            this.go('/pages/help-for-user');
           });
         });
       });
@@ -138,6 +147,16 @@ export class SignUpComponent implements OnInit {
       this.showForm = !this.showForm;
       this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
       this.currentIndex++;
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+    } , ms );
+  }
+
+  previous( ms: number) {
+    this.showForm = !this.showForm;
+    setTimeout( ( ) => {
+      this.showForm = !this.showForm;
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+      this.currentIndex--;
       this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
     } , ms );
   }
@@ -173,6 +192,7 @@ export class SignUpComponent implements OnInit {
   }
 
   go( path: string ) {
+    this.detailDialogRef?.close();
     this.router.navigate( [path] );
   }
 }
