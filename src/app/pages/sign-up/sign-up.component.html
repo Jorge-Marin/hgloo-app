@@ -31,6 +31,11 @@
                         </div>
                         <div *ngIf="show[ 1 ].show">
                             <div class="row">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <nb-icon icon="arrow-back-outline" (click)="previous(300)"></nb-icon>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2" style="padding: 0px 100px;">
                                     <nb-user class="mx-auto" size="large"
                                         name="{{ name.value + ' ' + lastname.value }}"
@@ -49,6 +54,9 @@
                             </div>
                         </div>
                         <div *ngIf="show[ 2 ].show">
+                            <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                <nb-icon icon="arrow-back-outline" (click)="previous(300)"></nb-icon>
+                            </div>
                             <div class="row">
                                 <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2" style="padding: 0px 100px;">
                                     <nb-user class="mx-auto" size="large"
@@ -89,18 +97,18 @@
                             <button class="rounded-pill continue-button" (click)="toggle(dialog)" *ngIf="show[ 2 ].show">Continue</button>
                         </div>
                         <div class="col-9 mx-auto text-center">
-                            <button class="rounded-pill continue-button log-in-button" (click)="go('/login')">Log in</button>
+                            <button class="rounded-pill continue-button log-in-button" (click)="go('/pages/help-for-user')">Log in</button>
                         </div>
                         <div class="col-9 mx-auto my-4 text-center subtext">
                             By continuing, you agree to 
                             <b>
-                                <a [routerLink]="" (click)="openModal(dialog)">Hgloo conditions</a>
+                                <a href="javascript:void(0);" (click)="openModal(dialog)">Hgloo conditions</a>
                             </b>
                              of use and privacy notice.
                         </div>
                         <div class="col-9 mx-auto text-center subtext">
                             <b>
-                                <a [routerLink]="">Need help?</a>
+                                <a href="javascript:void(0);">Need help?</a>
                             </b>
                         </div>
                         <div class="col-9 mx-auto text-center">
@@ -113,7 +121,7 @@
     </div>
 </div>
 
-<ng-template #dialog let-data let-ref="dialogRef">
+<ng-template #dialog >
     <nb-card [nbSpinner]="saving" nbSpinnerStatus="primary">
       <nb-card-header><h5>Términos y condiciones</h5></nb-card-header>
       <nb-card-body>
@@ -130,7 +138,7 @@
       </nb-card-body>
       <nb-card-footer>
         <button class="rounded-pill continue-button log-in-button terms-and-conditions-buttons mx-2" (click)="closeModal()">Close</button>
-        <button *ngIf="seeAcceptButton" class="rounded-pill continue-button terms-and-conditions-buttons" (click)="openModal(dialog)" (click)="saveUser()" >Accept terms and conditions</button>
+        <button *ngIf="seeAcceptButton" class="rounded-pill continue-button terms-and-conditions-buttons" (click)="saveUser()" >Accept terms and conditions</button>
       </nb-card-footer>
     </nb-card>
   </ng-template>
