@@ -15,9 +15,15 @@
 
 .lado2 {
     position: relative;
+
     float: left;
     height: 60%;
     width: 60%;
+}
+
+.img {
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
 }
 
 .lado2 img {
