@@ -46,4 +46,7 @@ export class LoginComponent implements OnInit {
       this.auth.login( this.email.value, this.password.value);
    }
   }
+  openModal(modal: any ) {
+    this.dialogService.open(modal, { hasScroll: true});
+  }
 }

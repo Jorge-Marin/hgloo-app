@@ -30,9 +30,9 @@
                         <div class="col-9 mx-auto my-4 text-center subtext">
                             By continuing, you agree to 
                             <b>
-                                <a href="https://akveo.page.link/8V2f" target="_blank">Hgloo conditions</a>
+                                <a [routerLink]="" (click)="openModal(dialog)">Hgloo conditions</a>
                             </b>
-                            of use and privacy notice.
+                             of use and privacy notice.
                         </div><br><br>
                         <div class="col-9 mx-auto text-center subtext">
                             <b>
@@ -51,3 +51,26 @@
         <img class ="img" src="assets\images\background-images\login.svg">
     </div>
 </div>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card [nbSpinner]="saving" nbSpinnerStatus="primary">
+      <nb-card-header><h5>Términos y condiciones</h5></nb-card-header>
+      <nb-card-body>
+        <div class="modal-content-lg mx-auto">
+            <div class="container" style="height: 400px;">
+                <div class="row" *ngFor="let term of termsAndConditions">
+                    <div class="col-12 my-2">
+                        <h6>{{ term.title }}</h6>
+                        <small class="text-muted">{{ term.description }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <button class="rounded-pill continue-button log-in-button terms-and-conditions-buttons mx-2" (click)="ref.close()">Close</button>
+        <button class="rounded-pill continue-button terms-and-conditions-buttons" (click)="openModal(dialog)" (click)="saveUser()" >Accept terms and conditions</button>
+      </nb-card-footer>
+    </nb-card>
+  </ng-template>
+  
