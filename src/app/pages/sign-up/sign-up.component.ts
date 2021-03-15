@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { NbDialogService } from '@nebular/theme';
+import { terms } from '../../utilities/terms-and-conditions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -25,6 +27,7 @@ export class SignUpComponent implements OnInit {
   show = [ { show: true }, { show: false }, { show: false } ];
   showForm: boolean = false;
   currentIndex: number = 0;
+  termsAndConditions = terms;
   signUpForm: FormGroup = this.formBuilder.group({
     name: ['', Validators.required ],
     lastname: ['', Validators.required],
@@ -39,6 +42,7 @@ export class SignUpComponent implements OnInit {
   });
 
   constructor( private formBuilder: FormBuilder,
+               private dialogService: NbDialogService,
                private auth: AuthService ) { }
 
   ngOnInit(): void {
@@ -84,5 +88,8 @@ export class SignUpComponent implements OnInit {
   }
 
   setImage( image ) {
+
+  }   openModal(modal: any ) {
+    this.dialogService.open(modal, { hasScroll: true});
   }
 }

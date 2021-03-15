@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { NbDialogService } from '@nebular/theme';
+import { terms } from '../../utilities/terms-and-conditions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user: any;
+  termsAndConditions = terms;
   localStorage = window.localStorage;
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', Validators.required ],
@@ -20,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder,
     private auth: AuthService,
+    private dialogService: NbDialogService,
     private router: Router ) {
      }
 
