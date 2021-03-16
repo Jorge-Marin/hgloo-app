@@ -107,7 +107,7 @@ export class SignUpComponent implements OnInit {
          break;
       }
       case 2: {
-        if ( this.country.invalid && this.province.invalid && this.city.invalid ) {
+        if ( !this.country.invalid && !this.province.invalid && !this.city.invalid ) {
           this.seeAcceptButton = true;
           this.openModal(modal);
          } else {
@@ -124,7 +124,7 @@ export class SignUpComponent implements OnInit {
 
   saveUser() {
     this.saving = true;
-    if ( !this.signUpForm.valid ) {
+    if ( this.signUpForm.valid ) {
       this.auth.signUp( this.email.value, this.password.value ).then( res => {
         this.storage.uploadFile( this.photo, res.uid).then( upload => {
           const user = this.signUpForm.value;
@@ -141,7 +141,7 @@ export class SignUpComponent implements OnInit {
       }).catch( (error) => {
           this.saving = false;
           this.detailDialogRef.close();
-          if ( error.error.code === "auth/email-already-in-use" ) {
+          if ( error.error.code === 'auth/email-already-in-use' ) {
             this.toast.show('Este email, ya se encuentra en uso.', 'Error', { status: 'danger', icon: 'close-circle-outline' });
           } else {
             this.toast.show('A ocurrido un error, vuelva a intentarlo.', 'Error', { status: 'danger', icon: 'close-circle-outline' });
