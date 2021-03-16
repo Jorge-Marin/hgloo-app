@@ -24,6 +24,7 @@ const routes: Routes = [{
       path: 'login',
       component: LoginComponent,
     },
+    {
       path: 'help-for-user',
       component: FirstStepsComponent,
     },
