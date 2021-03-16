@@ -36,10 +36,6 @@
     background-repeat:no-repeat;
 }
 
-.lado2 img {
-    
-}
-
 .padre {
     display: flex;
     justify-content: center;
@@ -87,9 +83,15 @@
     line-height: 15px;
 }
 
-nb-card {
+.card-login {
     background-color: transparent;
     border: none;
+}
+
+.terms-and-conditions-buttons {
+    padding: 12px 35px;
+    font-size: 0.7rem;
+    width: auto !important;
 }
 
 nb-select { width: 100%; }
@@ -135,9 +137,4 @@ h6, h5 {
 
 h6 {
     font-size: 0.8rem;
-}
-
-.terms-and-conditions-buttons {
-    padding: 12px 15px;
-    font-size: 0.7rem;
 }
