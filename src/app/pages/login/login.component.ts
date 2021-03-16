@@ -26,13 +26,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user: any;
-  phrases = [ 
-    '¿Cuánto Cuesta?', 
+  phrases = [
+    '¿Cuánto Cuesta?',
     '¡Te lo cambio!',
     '¡Te lo compro!',
     '¿Aún está \ndisponible?',
     '¿Ya lo vendió?',
-    '¡Bienvenido a \nHgloo!'
+    '¡Bienvenido a \nHgloo!',
    ];
   showBanner = true;
   currentPhrases = 0;
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.showBanner = true;
     setInterval( ( ) => {
-      this.currentPhrases = ( this.currentPhrases !== 5 ) ? this.currentPhrases + 1: 0;
+      this.currentPhrases = ( this.currentPhrases !== 5 ) ? this.currentPhrases + 1 : 0;
     } , 2500 );
-  
+
     this.auth.isAuthenticated().then( user => {
       if ( localStorage.getItem('token') ) {
         if ( user ) {
