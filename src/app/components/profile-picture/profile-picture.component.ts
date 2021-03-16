@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DomSanitizer , SafeStyle, SafeUrl } from '@angular/platform-browser';
 
 interface Picture {
@@ -14,6 +14,7 @@ interface Picture {
   styleUrls: ['./profile-picture.component.scss'],
 })
 export class ProfilePictureComponent implements OnInit {
+  @Input() pictureExist: any;
   @Output() imageReady = new EventEmitter();
   picture: Picture = { safeUrl: null };
   defaultBackground: SafeStyle = this.sanitizer.bypassSecurityTrustStyle( 'url(' + '../../../assets/images/background-images/image-outline.svg' + ')' );
@@ -22,6 +23,12 @@ export class ProfilePictureComponent implements OnInit {
   constructor( private sanitizer: DomSanitizer ) { }
 
   ngOnInit(): void {
+
+    if ( this.pictureExist ) {
+      this.picture.safeUrl = this.sanitizer.bypassSecurityTrustStyle(
+        'url(' + this.pictureExist + ')',
+      );
+    }
   }
 
   selectPicture(event) {

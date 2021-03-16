@@ -13,7 +13,7 @@
                         <div *ngIf="show[ 0 ].show">
                             <div class="row">
                                 <div class="col-12">
-                                    <ngx-profile-picture (imageReady)="setImage( $event )" class="mx-auto"></ngx-profile-picture>
+                                    <ngx-profile-picture (imageReady)="setImage( $event )" [pictureExist]="profileImage" class="mx-auto"></ngx-profile-picture>
                                     <div class="col-12 subtext text-center">
                                         Profile picture
                                     </div>
@@ -97,7 +97,7 @@
                             <button class="rounded-pill continue-button" (click)="toggle(dialog)" *ngIf="show[ 2 ].show">Continue</button>
                         </div>
                         <div class="col-9 mx-auto text-center">
-                            <button class="rounded-pill continue-button log-in-button" (click)="go('/pages/help-for-user')">Log in</button>
+                            <button class="rounded-pill continue-button log-in-button" (click)="go('/pages/login')">Log in</button>
                         </div>
                         <div class="col-9 mx-auto my-4 text-center subtext">
                             By continuing, you agree to 
@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+
 
 <ng-template #dialog >
     <nb-card [nbSpinner]="saving" nbSpinnerStatus="primary">
