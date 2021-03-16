@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
 import { FirstStepsComponent } from './first-steps/first-steps.component';
 
 const routes: Routes = [{
@@ -20,6 +21,9 @@ const routes: Routes = [{
       component: SignUpComponent,
     },
     {
+      path: 'login',
+      component: LoginComponent,
+    },
       path: 'help-for-user',
       component: FirstStepsComponent,
     },

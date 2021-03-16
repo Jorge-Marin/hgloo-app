@@ -1,0 +1,140 @@
+@import '../../@theme/styles/variables.scss';
+
+.container-fluid {
+    height: 100vh;
+    background-color: white;
+    background-position: center;
+    padding-top: 1%;
+}
+
+.lado1 {
+    float: left;
+    width: 400px;
+    margin-left: 13%;
+}
+
+.lado2 {
+    position: relative;
+    float: left;
+    width: 100%;
+    background-image: url('../../../assets/images/background-images/login.svg');
+    height: 630px;
+    display: flex;
+    align-items: center;
+}
+
+.lado2 h1 {
+    font-size: 4rem;
+    font-family: 'Montserrat-Medium';
+    color: #959595;
+    opacity: 0.44;
+    line-height: '50pt';
+}
+
+.img {
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+}
+
+.padre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hijo {
+    justify-content: center;
+    align-items: center;
+}
+
+.register-input {
+    background-color: $color-gray-100;
+    border-color: $color-white;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #959595;
+    margin-bottom: 10px;
+    width: 302.92px;
+    height: 46.37px;
+    padding-left: 30px;
+}
+
+.continue-button {
+    border: none;
+    border-radius: 20px;
+    background-color: $color-blue-900;
+    color: $color-white;
+    width: 226.37px;
+    height: 46.37px;
+    font-family: Montserrat;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 15px;
+}
+
+.log-in-button {
+    background-color: $color-gray-100;
+    border-radius: 20px;
+    color: $color-gray-900;
+    width: 226.37px;
+    height: 46.37px;
+    font-family: Montserrat;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.card-login {
+    background-color: transparent;
+    border: none;
+}
+
+.terms-and-conditions-buttons {
+    padding: 12px 35px;
+    font-size: 0.7rem;
+    width: auto !important;
+}
+
+nb-select { width: 100%; }
+
+@media screen and (max-width: 1180px) {
+    .lado2 {
+    display:none;
+    }
+
+    .lado1 {
+        width: 100%;
+        padding: 0%;
+        margin-left: 0%;
+        margin: auto;
+        background-image: url('../../../assets/images/background-images/login-form.svg');
+        background-size: contain;
+        height: 530px;
+        background-repeat: no-repeat !important;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .register-input {
+        width: auto;
+    }
+    .continue-button {
+        width: 150px;
+    }
+}
+
+nb-select { width: 100%; }
+
+nb-radio {
+    float: left !important;
+    zoom: 0.8;
+}
+
+h6, h5 {
+    font-family: 'Montserrat-SemiBold' !important;
+    color: $color-gray-900;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
