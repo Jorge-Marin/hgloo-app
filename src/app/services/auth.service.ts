@@ -13,7 +13,7 @@ export class AuthService {
                private router: Router ) { }
 
   signUp( email: string , password: string ): Promise <any> {
-    return new Promise ( ( resolve, rejects ) => {
+    return new Promise ( ( resolve, reject ) => {
       this.fireAuth.createUserWithEmailAndPassword( email , password ).then( add => {
         add.user.getIdToken().then( token => {
           const user = [{
@@ -26,6 +26,8 @@ export class AuthService {
          });
 
         resolve( { uid: add.user.uid });
+      }).catch( ( error ) => {
+        reject( { error: error } );
       });
     });
   }

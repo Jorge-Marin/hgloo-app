@@ -1,33 +1,33 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NbMenuModule,  NbUserModule, NbCardModule, NbButtonModule, NbSelectModule } from '@nebular/theme';
+import { NbMenuModule,  NbUserModule,
+         NbCardModule, NbButtonModule,
+         NbSelectModule, NbRadioModule, NbDialogModule,
+         NbSpinnerModule, NbStepperModule, NbIconModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
-import { ProfilePictureComponent } from '../components/profile-picture/profile-picture.component';
+import { SignUpModule } from './sign-up/sign-up.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FirstStepsModule } from '../pages/first-steps/first-steps.module';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
     ThemeModule,
-    NbMenuModule,
-    NbUserModule,
-    NbCardModule,
-    NbButtonModule,
-    NbSelectModule,
     ReactiveFormsModule,
     FormsModule,
+    SignUpModule,
+    FirstStepsModule,
+    NbCardModule,
+    NbUserModule,
   ],
   declarations: [
     PagesComponent,
     NotFoundComponent,
-    SignUpComponent,
     LoginComponent,
-    ProfilePictureComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })

@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 700px">
     <div class="row">
-        <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 my-1 mx-auto">
-            <nb-card>
+        <div class="col-11 col-sm-11 col-md-7 col-lg-6 col-xl-4 my-1 mx-auto">
+            <nb-card style="background-color: transparent; border: none;">
                 <nb-card-body>
                     <div class="row">
-                        <img width="80px" class="mx-auto" src="../../../assets/images/logotype/logo-blue.svg" alt="">
+                        <img width="80px" class="mx-auto" src="../../../assets/images/logotype/logo-blue.svg">
                         <div class="col-12 text-center subtext my-2">
                             SELL OR BUY PRODUCTS.
                         </div>
@@ -13,89 +13,102 @@
                         <div *ngIf="show[ 0 ].show">
                             <div class="row">
                                 <div class="col-12">
-                                    <ngx-profile-picture (imageReady)="setImage( $event )" class="mx-auto"></ngx-profile-picture>
+                                    <ngx-profile-picture (imageReady)="setImage( $event )" [pictureExist]="profileImage" class="mx-auto"></ngx-profile-picture>
                                     <div class="col-12 subtext text-center">
                                         Profile picture
                                     </div>
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="name" class="form-control register-input rounded-pill input-text" placeholder="Name">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="text" formControlName="name" class="form-control register-input rounded-pill input-text" placeholder="Name" [class.is-invalid]="name?.invalid && name?.touched">
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="lastname" class="form-control register-input rounded-pill input-text" placeholder="Last name">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="text" formControlName="lastname" class="form-control register-input rounded-pill input-text" placeholder="Last name" [class.is-invalid]="lastname?.invalid && lastname?.touched">
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="phone" class="form-control register-input rounded-pill input-text" placeholder="Phone number">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="text" formControlName="phone" class="form-control register-input rounded-pill input-text" placeholder="Phone number" [class.is-invalid]="phone?.invalid && phone?.touched || phone?.errors?.pattern && phone?.touched ">
                                 </div>
                             </div>
                         </div>
                         <div *ngIf="show[ 1 ].show">
                             <div class="row">
-                                <div class="col-9 mx-auto my-2">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <nb-icon icon="arrow-back-outline" (click)="previous(300)"></nb-icon>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2" style="padding: 0px 100px;">
                                     <nb-user class="mx-auto" size="large"
-                                        name="John Doe"
-                                        title="Engineer"
-                                        [picture]="'../../../assets/images/grant.jpg'">
+                                        name="{{ name.value + ' ' + lastname.value }}"
+                                        [picture]="profileImage">
                                     </nb-user>
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="email" class="form-control register-input rounded-pill input-text" placeholder="Email">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="text" formControlName="email" class="form-control register-input rounded-pill input-text" placeholder="Email" [class.is-invalid]="email?.invalid && email?.touched || email?.errors?.pattern && email?.touched">
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="password" class="form-control register-input rounded-pill input-text" placeholder="Passsword">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="password" formControlName="password" class="form-control register-input rounded-pill input-password" placeholder="Passsword" [class.is-invalid]="passsword?.invalid && passsword?.touched">
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <input type="text" formControlName="confirmPassword" class="form-control register-input rounded-pill input-text" placeholder="Confirm passsword">
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <input type="password" formControlName="confirmPassword" class="form-control register-input rounded-pill input-text" placeholder="Confirm passsword" [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched">
                                 </div>
                             </div>
                         </div>
                         <div *ngIf="show[ 2 ].show">
-                            <div class="col-9 mx-auto my-2">
-                                <nb-user class="mx-auto" size="large"
-                                    name="John Doe"
-                                    title="Engineer"
-                                    [picture]="'../../../assets/images/grant.jpg'">
-                                </nb-user>
+                            <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                <nb-icon icon="arrow-back-outline" (click)="previous(300)"></nb-icon>
                             </div>
                             <div class="row">
-                                <div class="col-9 mx-auto my-2">
-                                    <nb-select  class="input-text" formControlName="country" placeholder="Pais">
-                                        <nb-option value="first">Paices</nb-option>
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2" style="padding: 0px 100px;">
+                                    <nb-user class="mx-auto" size="large"
+                                        name="{{ name.value + ' ' + lastname.value }}"
+                                        [picture]="profileImage">
+                                    </nb-user>
+                                </div>
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <nb-select  class="input-text" (selectedChange)="getProvinces()" [formControl]="country" placeholder="Pais"  [class.is-invalid]="country?.invalid && country?.touched">
+                                        <nb-option *ngFor="let country of countrys; let i=index;" value="{{i+1}}">{{ country.pais }}</nb-option>
                                     </nb-select>
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <nb-select  class="input-text" formControlName="province" placeholder="Provincias">
-                                        <nb-option value="first">Provincias</nb-option>
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <nb-select  class="input-text" [formControl]="province" (selectedChange)="getCitys()" placeholder="Provincias" [class.is-invalid]="province?.invalid && province?.touched">
+                                        <nb-option *ngFor="let province of provinces; let i=index;" value="{{i+1}}">{{ province.departamento }}</nb-option>
                                     </nb-select>
                                 </div>
-                                <div class="col-9 mx-auto my-2">
-                                    <nb-select class="input-text" formControlName="city" placeholder="Ciudad">
-                                        <nb-option value="first">Ciudades</nb-option>
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto my-2">
+                                    <nb-select class="input-text" [formControl]="city" placeholder="Ciudad" [class.is-invalid]="city?.invalid && city?.touched">
+                                        <nb-option *ngFor="let city of citys; let i=index" value="{{i+1}}">{{ city.nombreciudad }}</nb-option>
                                       </nb-select>
+                                </div>
+                                <div class="col-12 col-sm-10 col-md-9 col-lg-9 col-xl-9 mx-auto">
+                                    <div class="container">
+                                        <nb-radio-group [formControl]="genre">
+                                            <nb-radio value="1">Man</nb-radio>
+                                            <nb-radio value="2">Woman</nb-radio>
+                                            <nb-radio value="3">Others</nb-radio>
+                                        </nb-radio-group>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <div class="row">
+                    <div class="row my-2">
                         <div class="col-9 mx-auto my-1 text-center">
                             <button class="rounded-pill continue-button" (click)="toggle()" *ngIf="!show[ 2 ].show">Continue</button>
-                        </div>
-                        <div class="col-9 mx-auto my-1 text-center">
-                            <button class="rounded-pill continue-button" (click)="saveUser()" *ngIf="show[ 2 ].show">Continue</button>
+                            <button class="rounded-pill continue-button" (click)="toggle(dialog)" *ngIf="show[ 2 ].show">Continue</button>
                         </div>
                         <div class="col-9 mx-auto text-center">
-                            <button class="rounded-pill continue-button log-in-button">Log in</button>
+                            <button class="rounded-pill continue-button log-in-button" (click)="go('/pages/login')">Log in</button>
                         </div>
                         <div class="col-9 mx-auto my-4 text-center subtext">
                             By continuing, you agree to 
                             <b>
-                                <a [routerLink]="" (click)="openModal(dialog)">Hgloo conditions</a>
+                                <a href="javascript:void(0);" (click)="openModal(dialog)">Hgloo conditions</a>
                             </b>
                              of use and privacy notice.
                         </div>
                         <div class="col-9 mx-auto text-center subtext">
                             <b>
-                                <a href="https://akveo.page.link/8V2f" target="_blank">Need help?</a>
+                                <a href="javascript:void(0);">Need help?</a>
                             </b>
                         </div>
                         <div class="col-9 mx-auto text-center">
@@ -108,7 +121,8 @@
     </div>
 </div>
 
-<ng-template #dialog let-data let-ref="dialogRef">
+
+<ng-template #dialog >
     <nb-card [nbSpinner]="saving" nbSpinnerStatus="primary">
       <nb-card-header><h5>Términos y condiciones</h5></nb-card-header>
       <nb-card-body>
@@ -124,9 +138,8 @@
         </div>
       </nb-card-body>
       <nb-card-footer>
-        <button class="rounded-pill continue-button log-in-button terms-and-conditions-buttons mx-2" (click)="ref.close()">Close</button>
-        <button class="rounded-pill continue-button terms-and-conditions-buttons" (click)="saveUser()" >Accept terms and conditions</button>
+        <button class="rounded-pill continue-button log-in-button terms-and-conditions-buttons mx-2" (click)="closeModal()">Close</button>
+        <button *ngIf="seeAcceptButton" class="rounded-pill continue-button terms-and-conditions-buttons" (click)="saveUser()" >Accept terms and conditions</button>
       </nb-card-footer>
     </nb-card>
   </ng-template>
-  
