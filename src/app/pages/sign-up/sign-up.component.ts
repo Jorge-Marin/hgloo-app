@@ -139,6 +139,7 @@ export class SignUpComponent implements OnInit {
           });
         });
       }).catch( (error) => {
+        this.seeAcceptButton = false;
           this.saving = false;
           this.detailDialogRef.close();
           if ( error.error.code === 'auth/email-already-in-use' ) {
@@ -174,7 +175,7 @@ export class SignUpComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL($image.profile.file);
     reader.onload = () => {
-    this.profileImage = reader.result;
+      this.profileImage = reader.result;
     };
   }
 
