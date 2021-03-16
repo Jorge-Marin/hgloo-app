@@ -11,9 +11,31 @@ import { Router } from '@angular/router';
   selector: 'ngx-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('popFirstState', [
+      state('show', style({
+        opacity: 1,
+      })),
+      state('hide',   style({
+        opacity: 0,
+      })),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('600ms ease-in')),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   user: any;
+  phrases = [ 
+    '¿Cuánto Cuesta?', 
+    '¡Te lo cambio!',
+    '¡Te lo compro!',
+    '¿Aún está \ndisponible?',
+    '¿Ya lo vendió?',
+    '¡Bienvenido a \nHgloo!'
+   ];
+  showBanner = true;
+  currentPhrases = 0;
   termsAndConditions = terms;
   localStorage = window.localStorage;
   loginForm: FormGroup = this.formBuilder.group({
@@ -28,6 +50,11 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.showBanner = true;
+    setInterval( ( ) => {
+      this.currentPhrases = ( this.currentPhrases !== 5 ) ? this.currentPhrases + 1: 0;
+    } , 2500 );
+  
     this.auth.isAuthenticated().then( user => {
       if ( localStorage.getItem('token') ) {
         if ( user ) {
@@ -44,6 +71,9 @@ export class LoginComponent implements OnInit {
 
   get email() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
+  get stateName() {
+    return this.showBanner ? 'show' : 'hide';
+  }
 
   login() {
    if ( this.loginForm.valid ) {

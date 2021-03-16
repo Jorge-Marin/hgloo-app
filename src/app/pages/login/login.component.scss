@@ -10,15 +10,25 @@
 .lado1 {
     float: left;
     width: 400px;
-    margin-left: 10%;
+    margin-left: 13%;
 }
 
 .lado2 {
     position: relative;
-
     float: left;
-    height: 60%;
-    width: 60%;
+    width: 100%;
+    background-image: url('../../../assets/images/background-images/login.svg');
+    height: 630px;
+    display: flex;
+    align-items: center;
+}
+
+.lado2 h1 {
+    font-size: 4rem;
+    font-family: 'Montserrat-Medium';
+    color: #959595;
+    opacity: 0.44;
+    line-height: 50pt;
 }
 
 .img {
@@ -27,9 +37,7 @@
 }
 
 .lado2 img {
-    width: 100%;
-    height: auto;
-    padding: 20px;
+    
 }
 
 .padre {
@@ -86,14 +94,20 @@ nb-card {
 
 nb-select { width: 100%; }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 1180px) {
     .lado2 {
     display:none;
     }
+
     .lado1 {
         width: 100%;
         padding: 0%;
         margin-left: 0%;
+        margin: auto;
+        background-image: url('../../../assets/images/background-images/login-form.svg');
+        background-size: contain;
+        height: 530px;
+        background-repeat: no-repeat !important;
     }
 }
 

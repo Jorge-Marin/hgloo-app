@@ -47,6 +47,12 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.showForm = true;
+    setTimeout( ( ) => {
+      this.showForm = !this.showForm;
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+      this.currentIndex++;
+      this.show[ this.currentIndex ].show = !this.show[ this.currentIndex ].show;
+    } , 300 );
   }
 
   toggle() {
